@@ -2,6 +2,7 @@
 
 namespace Gkiokan\Profile\Providers;
 
+use \Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 
@@ -26,6 +27,12 @@ class ProfileServiceProvider extends ServiceProvider
         $this->registerViews();
 
         $router->middleware('IsMyOwnProfile', \Gkiokan\Profile\Http\Middleware\IsOwnProfile::class);
+
+        // app()->singleton('profile.callme', '\Gkiokan\Profile\Helpers\CallMe');
+        $this->app->singleton('profile.callme', '\Gkiokan\Profile\Helpers\CallMe');
+        $this->app->singleton('profile.magic', '\Gkiokan\Profile\Profile');
+
+        include_once __DIR__ .'/../start.php';
     }
 
     /**
@@ -36,6 +43,8 @@ class ProfileServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Magic', '\Gkiokan\Profile\Helpers\CallMe');
     }
 
     /**
