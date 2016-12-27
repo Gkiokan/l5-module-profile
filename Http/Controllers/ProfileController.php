@@ -14,35 +14,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile::index');
+        $user    = \Auth::user();
+        $user    = \Gkiokan\Profile\UserProfile::where('id', $user->id)->first();
+        $profile = \Gkiokan\Profile\Profile::where('user_id', $user->id)->first();
+        return view('profile::index', compact(['user', 'profile']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('profile::create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @return Response
-     */
-    public function edit()
-    {
-        return view('profile::edit');
-    }
 
     /**
      * Update the specified resource in storage.
@@ -52,6 +29,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
     }
+
 
     /**
      * Remove the specified resource from storage.

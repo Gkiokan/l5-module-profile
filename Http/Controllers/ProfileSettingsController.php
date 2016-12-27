@@ -14,7 +14,10 @@ class ProfileSettingsController extends Controller
      */
     public function index()
     {
-        return view('profile::settings');
+        $user    = \Auth::user();
+        $user    = \Gkiokan\Profile\UserProfile::where('id', $user->id)->first();
+        $profile = \Gkiokan\Profile\Profile::where('user_id', $user->id)->first();
+        return view('profile::settings', compact(['user', 'profile']));
     }
 
     /**
