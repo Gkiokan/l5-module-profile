@@ -72,11 +72,11 @@
 
               {{-- ZIP/City --}}
               <div class="form-group">
-                  <label class="control-label col-sm-3" for="plz">ZIP/City</label>
-                  <div class='col-sm-3 col-sm-offset-0'>
+                  <label class="control-label col-xs-12 col-sm-3" for="plz">ZIP/City</label>
+                  <div class='col-xs-5 col-sm-3 col-sm-offset-0'>
                       <input type='text' id='plz' maxlength=5 class='form-control' name='plz' placeholder='code' value='{{ $profile->plz }}'>
                   </div>
-                  <div class='col-sm-6 col-sm-offset-0'>
+                  <div class='col-xs-7 col-sm-6 col-sm-offset-0'>
                       <input type='text' id='city' class='form-control' name='city' placeholder="Your cities name" value='{{ $profile->city }}'>
                   </div>
               </div>
