@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Gkiokan\Profile\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -42,16 +43,11 @@ class ProfileController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
         // Get the User and account and stuff you know
         $user    = \Auth::user();
         $user    = \Gkiokan\Profile\UserProfile::where('id', $user->id)->first();
-
-        // Validate
-        $this->validate($request, [
-            'city' => 'required'
-        ]);
 
         // Update that stuff here
         $update  = $user->profile->update($request->all());
