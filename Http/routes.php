@@ -14,6 +14,14 @@ Route::group([
         //'middleware' => 'IsMyOwnProfile:magic',
     ]);
 
+    // Update that stuff
+    Route::patch('/update', [
+        'uses'    => 'ProfileController@update',
+        'as'      => 'profile.update',
+    ]);
+
+
+
     // User Profile Settings Page
     Route::get('settings', [
          'uses'   => 'ProfileSettingsController@index',

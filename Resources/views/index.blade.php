@@ -5,7 +5,6 @@
     <hr>
     <div class='space_50'></div>
 
-
         <h3>Account Information</h3>
         <hr>
 
@@ -32,7 +31,7 @@
         <h3>Profile Information</h3>
         <hr>
 
-        <form class="form-horizontal text-left">
+        <form class="form-horizontal text-left" action="{{ route('profile.update')}}" method='POST'>
         {{--First Row --}}
         <div class='row'>
         <div class='col-xs-12 col-sm-5'>
@@ -146,7 +145,16 @@
         </div>
         {{-- END 2nd row --}}
 
+        <div class='space_50'></div>
+        <div class='row'>
+            <div class='col-xs-12'>
+                <button type='submit' class="btn btn-primary"> Update Profile </button>
+            </div>
+        </div>
 
+        {{-- additional stuff --}}
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
     </form>
 
     <div class='space_200'></div>
