@@ -28,7 +28,7 @@ class ProfileUpdateRequest extends FormRequest
 
             'street'=> 'alpha_spaces',
             'plz'   => 'numeric',
-            'city'  => 'required|min:3|alpha_dash',
+            'city'  => 'min:3|alpha_spaces',
             'state' => 'alpha_spaces',
             'country' => 'alpha_spaces',
 
